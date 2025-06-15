@@ -9,16 +9,22 @@ from playwright.sync_api import sync_playwright
 def main():
     print("🚀 Script started — reading sheet and launching...")
 
+    # ✅ ตรวจสอบฟอนต์ก่อนรัน
+    try:
+        font = ImageFont.truetype("NotoSansThai-SemiBold.ttf", 32)
+        print("✅ Font loaded successfully.")
+    except Exception as e:
+        print(f"❌ Failed to load font: {e}")
+        return
+
     # เขียนไฟล์ service account จาก ENV
     if "GOOGLE_APPLICATION_CREDENTIALS_JSON" in os.environ:
         with open("influencer-credentials.json", "w") as f:
             json.dump(json.loads(os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"]), f)
         os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "influencer-credentials.json"
 
-    # 📥 Debug: เริ่มเชื่อม Google Sheet
     print("📥 Connecting to Google Sheet...")
 
-    # กำหนดข้อมูล Google Sheet
     SPREADSHEET_ID = "1vRr9RYRJWR46m_rnZoO37hHD96CwipECAIxbCeAsHUw"
     RANGE = "Selected KOLs!B:N"
 
@@ -35,11 +41,9 @@ def main():
 
     print("✅ Connected to Google Sheet...")
 
-    # แปลงเป็น DataFrame
     values = sheet.get("values", [])
     df = pd.DataFrame(values[1:], columns=values[0])  # ข้าม header
 
-    # เริ่มอ่าน TikTok URL
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context()
@@ -72,9 +76,6 @@ def main():
                 comments = extract_number('strong[data-e2e="comment-count"]')
 
                 print(f"✅ Stats for {name}: Views={views}, Likes={likes}, Comments={comments}, Shares={shares}")
-
-                # ถ้ามีฟังก์ชัน generate_report(name, username, views, likes, comments, shares)
-                # ให้เรียกตรงนี้ได้เลย
 
             except Exception as e:
                 print(f"❌ Failed to load TikTok for {name}: {e}")
