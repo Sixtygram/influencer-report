@@ -13,22 +13,61 @@ if "GOOGLE_APPLICATION_CREDENTIALS_JSON" in os.environ:
 TikTok Influencer Report Generator
 =================================
 สร้างไฟล์ PNG / PDF รายคน ด้วยเลย์เอาต์ตามตัวอย่างที่ผู้ใช้ให้มา
-
-วิธีทำงาน (High-level)
------------------------
-1. ดึงข้อมูล Influencer Name + TikTok URL จาก Google Sheet
-2. สำหรับแต่ละ URL ➡ ดึงสถิติ View / Like / Share / Comment
-3. เติมข้อมูล + รูปโปรไฟล์ ลงใน template.png ตามตำแหน่งที่กำหนด
-4. Export เป็น .png (และ opt. PDF)
-
-ก่อนใช้งาน
------------
-$ python -m venv venv && source venv/bin/activate
-$ pip install google-api-python-client google-auth pandas pillow requests playwright
-$ playwright install
-
-ตั้งค่า GOOGLE_APPLICATION_CREDENTIALS เป็น Service Account JSON ที่มีสิทธิอ่าน Google Sheet
-
-แก้ไขค่าด้านล่างให้ตรงกับไฟล์ / คอลัมน์ในชีตของคุณ
+...
 """
-# ... (ตัดตอนเพื่อความยาวสมเหตุผล) ...
+
+from googleapiclient.discovery import build
+from google.oauth2 import service_account
+import pandas as pd
+import requests
+from PIL import Image, ImageDraw, ImageFont
+from playwright.sync_api import sync_playwright
+
+# 📥 Debug: เริ่มเชื่อม Google Sheet
+print("📥 Connecting to Google Sheet...")
+
+# กำหนดข้อมูล Google Sheet
+SPREADSHEET_ID = "1vRr9RYRJWR46m_rnZoO37hHD96CwipECAIxbCeAsHUw"
+RANGE = "Selected KOLs!B:N"
+
+creds = service_account.Credentials.from_service_account_file(
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"],
+    scopes=["https://www.googleapis.com/auth/spreadsheets.readonly"]
+)
+
+service = build("sheets", "v4", credentials=creds)
+sheet = service.spreadsheets().values().get(
+    spreadsheetId=SPREADSHEET_ID,
+    range=RANGE
+).execute()
+
+# ✅ สำเร็จ
+print("✅ Connected to Google Sheet...")
+
+# แปลงเป็น DataFrame
+values = sheet.get("values", [])
+df = pd.DataFrame(values[1:], columns=values[0])  # ข้าม header
+
+# เริ่มอ่าน TikTok URL
+with sync_playwright() as p:
+    browser = p.chromium.launch(headless=True)
+    context = browser.new_context()
+    page = context.new_page()
+
+    for i, row in df.iterrows():
+        name = row["Influencers"]
+        url = row["Link Post"]
+        if not url:
+            continue
+
+        print(f">>> Processing influencer: {name}")
+        print(f"🔗 Visiting TikTok URL: {url}")
+
+        try:
+            page.goto(url, timeout=15000)
+            print(f"🌐 Loaded TikTok page for {name}")
+        except Exception as e:
+            print(f"❌ Failed to load TikTok for {name}: {e}")
+            continue
+
+# ... (rest of the logic: capture stats, paste into template, export PNG)
