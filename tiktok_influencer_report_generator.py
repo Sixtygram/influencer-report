@@ -1,5 +1,4 @@
 print("🚀 Script started — reading sheet and launching...")
-print(f">>> Processing influencer: {name}")
 
 import os, json
 
