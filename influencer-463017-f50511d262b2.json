@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "influencer-463017",
+  "private_key_id": "f50511d262b269531b663eb04497619716037558",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCYZ2Pvi75Gy8kC\n7I7HXJ+kSZtgz3ZlWwl0g/YlLQ5/eCKX5WlVLYJ3xcIGAYBfbzEsS2fm5Y0f0aYU\nsXPLP8U4nzECXxudPpJy8pTnuV67TW93rkLd3JgQrds8SCHJXKKogURaHOUlFqCh\n+JD9v9tTpZQl8woNC428xAJC2GeCFTMEuo+rH8fn4wj16RJYNCHavLg1hGvLckGC\n6uu6SPVqU+LQSngpokPf+Nacsgx2WMn0AmCpsCL+j/c7Qz8EPBC7vWDC/o5jBFOG\nr5Z0XPpiiSPdQXmGJBco6f4grSSbSZe8v70f3Qmxyjn8tB5RTIFVPLbmUu2qP6a5\nYqbjMy4rAgMBAAECggEAGplA2df714NNi9MZgDXsLtIh6h2LPllLJyi41vgsJZck\nAnqpjZIpyRmcqUutyfowDNkEQ0og/UKrx8TIvtpcY2t1NELBIQqAqMsprd+uZuY2\n5B5n0Szk5VRShQzZyLkAMoSNF2UfoP93/YzSUVcgwlKNrqniQTCZBi73bg8y0YL4\nrAk00NXFrfsQbAIumJwmWZ7Wuz7KFrDLlzHZ00ay2hS2eGv2k+y32Ur5wBpjGx+J\nGA9qhTxgrrXcAX/y0fvKk1V9iJHy6DLcZPum8G7x+aWC8+PQ2YPnxqw39/0/S8Zt\nrQe95RksHRuv/2ljFZRJfAQKeqnRY3zAq1PB61AFUQKBgQDM7DG3KuyPYdfFbOCB\nDoVqBknk+ocjjPLMGfV4ZPMxjpEMvlP51PhbbZUQPoGFUsCJIDN2x4rQJwBuV32H\nbb1MyhGOZ0vjGN937RrjBTOxrN+iyu0rtg6f6I64u+Cchm+3LDxEXfslZVRfty1f\nIhif8GXiSlsmr4BwMaZ2gIauHwKBgQC+ZA11qbogCzKOiMBZ5e8FaM++0QvBbe1N\nCK+Y6LpjvBQdFXHWj61cHUbVpxsDucKvCwjS8zml2mnUBDoBIpcDtMq7y9dMB89v\nxOkUv0os/O+5WigmqP0hbXpSgTI/z5vZDnHy2iozqEYcRcORmA1FV9LhWdie+hKD\neeTOVJMmdQKBgCB/QG8UvokKciZb2sp8nAmxT5yhYjbwDjzxzOy3zZ1JR5VmxXh0\nHqKZIS9/Shjzg5b7ZU3r3QafeMEG3OBSNdfsn5YeqXktI5soHcBsvcLqcFinp67r\n4yvWvHNtT/RimWrJ+BC7eq12gUfgi7Bvfso2XGHjessKv+qK5SQbw7/vAoGAXDvS\nPW9FCOMD0gMz1BlNKvy0r8dL/6AGduw/TT9plIl34QMTjBM8s8RHHZf/wVVLmEsr\nMi68fbmKzThi9UvRhu0dzc6ZdW7PMmFdXTyybYr3g37GtrvlLT2BJdkLA9jKsmOK\nFlFUYoQhuu6dKLpVq4M5WQySoamaMHFrw/068EUCgYBmvOf/Eq534Ddr6kBLagYT\ncur6tZwOhDrJjoPdWfxqmOHxL0KTrjROL+meu/THVrWe9vOQLfXKH9PVqUJB5bcB\nmgb/g9KEEToq5fPoPpkREK5LhjPG3eNnsWCxgQ636f9wLUHxrPQhfMGNvLOpqJnG\nb2HsO+qOzf+wqM6UTZMI3Q==\n-----END PRIVATE KEY-----\n",
+  "client_email": "report-access@influencer-463017.iam.gserviceaccount.com",
+  "client_id": "107665139387929027999",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/report-access%40influencer-463017.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
