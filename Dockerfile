@@ -12,6 +12,7 @@ WORKDIR /app
 # คัดลอกไฟล์ทั้งหมดเข้า container
 COPY . /app
 
+
 # อัปเดต pip และติดตั้ง package
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
