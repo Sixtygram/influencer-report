@@ -1,0 +1,2 @@
+[phases.setup]
+commands = ["chmod +x .railway/setup.sh", ".railway/setup.sh"]
