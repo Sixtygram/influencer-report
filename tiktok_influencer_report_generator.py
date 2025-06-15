@@ -1,3 +1,11 @@
+import os, json
+
+# เขียนไฟล์ service account จาก ENV
+if "GOOGLE_APPLICATION_CREDENTIALS_JSON" in os.environ:
+    with open("influencer-credentials.json", "w") as f:
+        json.dump(json.loads(os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"]), f)
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "influencer-credentials.json"
+
 # -*- coding: utf-8 -*-
 """
 TikTok Influencer Report Generator
