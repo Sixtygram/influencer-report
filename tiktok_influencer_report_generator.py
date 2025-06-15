@@ -1,10 +1,17 @@
-import os, json
-from googleapiclient.discovery import build
-from google.oauth2 import service_account
-import pandas as pd
-import requests
-from PIL import Image, ImageDraw, ImageFont
-from playwright.sync_api import sync_playwright
+print("🐍 Python file loading...")
+
+try:
+    import os, json
+    import pandas as pd
+    import requests
+    from googleapiclient.discovery import build
+    from google.oauth2 import service_account
+    from PIL import Image, ImageDraw, ImageFont
+    from playwright.sync_api import sync_playwright
+    print("✅ All imports loaded successfully.")
+except Exception as e:
+    print(f"❌ Import error: {e}")
+    exit(1)
 
 def main():
     print("🚀 Script started — reading sheet and launching...")
@@ -80,6 +87,8 @@ def main():
             except Exception as e:
                 print(f"❌ Failed to load TikTok for {name}: {e}")
                 continue
+
+print("🐍 Python file loaded")
 
 if __name__ == "__main__":
     print("🔥 Running __main__")

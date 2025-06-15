@@ -21,4 +21,4 @@ RUN pip install -r requirements.txt
 RUN playwright install --with-deps
 
 # รัน Python script
-CMD ["python", "tiktok_influencer_report_generator.py"]
+ENTRYPOINT ["python", "-u", "tiktok_influencer_report_generator.py"]
