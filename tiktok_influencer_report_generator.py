@@ -66,8 +66,31 @@ with sync_playwright() as p:
         try:
             page.goto(url, timeout=15000)
             print(f"🌐 Loaded TikTok page for {name}")
+
+            # เพิ่ม debug print ตรวจสอบก่อนดึงข้อมูล
+            print("🔍 Extracting TikTok stats...")
+
+            # ตัวอย่างการใช้ CSS Selector (ควรปรับตาม selector จริงในหน้า TikTok)
+            def extract_number(selector):
+                try:
+                    text = page.locator(selector).first.text_content()
+                    return text.strip() if text else "N/A"
+                except:
+                    return "N/A"
+
+            views = extract_number('strong[data-e2e="video-views"]')
+            likes = extract_number('strong[data-e2e="like-count"]')
+            shares = extract_number('strong[data-e2e="share-count"]')
+            comments = extract_number('strong[data-e2e="comment-count"]')
+
+            print(f"✅ Stats for {name}: Views={views}, Likes={likes}, Comments={comments}, Shares={shares}")
+
+            # ตรงนี้ใส่การเรียก generate_report() ถ้ามีอยู่ในโค้ดคุณ
+            # generate_report(name, username, views, likes, comments, shares)
+
         except Exception as e:
             print(f"❌ Failed to load TikTok for {name}: {e}")
             continue
+
 
 # ... (rest of the logic: capture stats, paste into template, export PNG)
